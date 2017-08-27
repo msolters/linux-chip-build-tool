@@ -47,7 +47,7 @@ The last stages will require manual input as `root` & `chip` user passwords will
 > Make sure, on the question asking which default system shell to use, to say "<No>" to using dash.  This can be problematic on the CHIP Pro.
 
 ## Completion
-When the build and configuration process is finally done, you should have a new file named `/vagrant/outputc/chip-base-image.tar.gz`.  This tarball will contain both the completed rootfs of the target OS and the uboot code specific to the CHIP Pro.
+When the build and configuration process is finally done, you should have a new file named `/vagrant/output/chip-base-image.tar.gz`.  This tarball will contain both the completed rootfs of the target OS and the uboot code specific to the CHIP Pro.
 
 To move forward with flashing this tarball to the CHIP, see [`flashing/README.md`](https://github.com/msolters/linux-chip-build-tool/tree/master/flashing)
 
