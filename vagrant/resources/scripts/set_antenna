@@ -1,0 +1,64 @@
+#!/bin/sh
+
+#
+# CRUMB antenna select - PB17
+#   0 = chip-antenna on pcb
+#   1 = u.fl connector
+#
+# GPIO map for PB17 on the gr8
+# PB = Bank B = Bank 1
+# IO 17
+# 32 IO per Bank
+# 32 * 1 + 17 = 49
+
+ANT_SELECT_GPIO=$(( 32 * 1 + 17 ))
+
+usage () {
+	echo "Usage for ${0}:"
+	echo "    ${0} [pcb|ufl]"
+	exit
+}
+
+if [ "${1}" = "pcb" ]; then
+	ANT_VALUE=0
+elif [ "${1}" = "ufl" ]; then
+	ANT_VALUE=1
+else
+	usage
+fi
+
+antenna="${1}"
+
+failed () {
+        status=$2
+
+        echo ${1}
+        echo ${ANT_SELECT_GPIO} > /sys/class/gpio/unexport
+        exit ${status}
+}
+
+# Make sure this is a Crumb
+[ "$(cat /proc/device-tree/model)" = "NextThing Crumb" ] || \
+        failed "This is not a Crumb ... exiting" $?
+
+# Make the ANT_SELECT_GPIO available to userspace
+if [ ! -e /sys/class/gpio/gpio${ANT_SELECT_GPIO} ]; then
+        echo ${ANT_SELECT_GPIO} > /sys/class/gpio/export || \
+                failed "Failed to export ANT_SELECT_GPIO" $?
+fi
+
+# Set ANT_SELECT_GPIO to be an output
+echo out > /sys/class/gpio/gpio${ANT_SELECT_GPIO}/direction || \
+        failed "Failed to set ANT_SELECT_GPIO direction = out" $?
+
+# Set ANT_SELECT_GPIO value to ANT_VALUE for antenna selection
+{
+        echo "${ANT_VALUE}" > /sys/class/gpio/gpio${ANT_SELECT_GPIO}/value;
+        sleep 0.1;
+} || failed "Failed to select antenna ${antenna}" $?
+
+# Cleanup ANT_SELECT_GPIO by unexport'ing it
+echo ${ANT_SELECT_GPIO} > /sys/class/gpio/unexport || \
+        failed "Failed to unexport ANT_SELECT_GPIO" $?
+
+echo "Antenna selection set to $antenna"
