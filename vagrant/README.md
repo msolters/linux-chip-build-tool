@@ -102,7 +102,7 @@ You can create new sections in this file, remove existing sections, or even make
 This file (and `resources/debian-jessie-compile-env.conf`) are merely provided as examples and jumping-off points!  Feel free to tweak!
 
 ### Customizing Post-Build System
-This is where a bulk of your custom business logic and user-specific configuration will take place.  Once you have the kernel, modules, and packages installed, `build-scripts/configure-chip.sh` will be executed.
+This is where a bulk of your custom business logic and user-specific configuration will take place.  Once you have the kernel, modules, and packages installed, [`build-scripts/configure-chip.sh`](https://github.com/msolters/linux-chip-build-tool/blob/master/vagrant/build-scripts/configure-chip.sh) will be executed.
 
 Here, you can script any kind of operation you'd like to perform on the target OS before it gets bundled up as an image.
 
