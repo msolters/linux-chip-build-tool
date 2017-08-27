@@ -1,3 +1,14 @@
+# =========================
+# Project Files
+# =========================
+vagrant/output
+vagrant/*.log
+vagrant/.vagrant
+flashing/CHIP-tools
+flashing/sunxi-tools
+flashing/rootfs.tar
+flashing/nand-image
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
