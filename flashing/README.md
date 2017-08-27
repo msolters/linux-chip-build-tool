@@ -25,6 +25,14 @@ If this completes successfully, there should now be a `flashing/nand-image` dire
 
 > This can take a while!
 
+The output of this command will also indicate the total size the image will take up on the target device:
+
+```
+ubinize: volume size was not specified in section "rootfs", assume minimum to fit image "/tmp/chip-ubi-2oBS2u/rootfs.ubifs"260112384 bytes (248.1 MiB)
+```
+
+Always keep an eye on this number!  Remember that the maximum size of the CHIP Pro NAND drive is only 512Mb.  Once you get close to filling this up, you will begin to encounter random crashes.
+
 ## Flash
 Hold the FEL button on the CHIP Pro, and connect it to the host via the USB connection (USB0 UART if on DevKit).  Continue holding the FEL button for about 5 seconds after connection, and then you can release it (this ensures the CHIP completely boots into and stays in FEL mode).
 
