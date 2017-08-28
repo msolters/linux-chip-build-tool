@@ -1,4 +1,5 @@
 # Building
+## Purpose
 We use Vagrant as the build environment the CHIP Pro's target OS.  Inside the Vagrant environment we will:
 
 *  Compile a kernel with necessary modules using `buildroot`
