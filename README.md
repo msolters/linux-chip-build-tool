@@ -4,6 +4,17 @@ This software provides a convenient and highly automated system by which you can
 Flashing CLI utilities from NTC are also repackaged here in the `/flashing` directory.  It is recommended to flash on a Linux host.  Flashing on Windows or Mac using these scripts doesn't seem reliable.
 
 # Quick Start
+Some quick vocab:
+
+*  `Target OS`: the Linux image we want to create for the CHIP Pro
+*  `Development Host`: the localhost you are working on to run this build tool
+
+First, clone this repository to your development host!
+```
+git clone http://github.com/msolters/linux-chip-build-tool
+cd ./linux-chip-build-tool
+```
+
 ## Building
 See [`vagrant/README.md`](https://github.com/msolters/linux-chip-build-tool/tree/master/vagrant).
 
