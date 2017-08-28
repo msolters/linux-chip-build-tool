@@ -106,6 +106,8 @@ You can create new sections in this file, remove existing sections, or even make
 
 This file (and `resources/debian-jessie-compile-env.conf`) are merely provided as examples and jumping-off points!  Feel free to tweak!
 
+*If* you decide to use a new `multistrap` .conf file, make sure you update the [reference inside `build-image.sh`](https://github.com/msolters/linux-chip-build-tool/blob/master/vagrant/build-image.sh#L9) to point to the new file name.  Then, run `vagrant provision` to update the build environment.
+
 ### Customizing Post-Build System
 This is where a bulk of your custom business logic and user-specific configuration will take place.  Once you have the kernel, modules, and packages installed, [`build-scripts/configure-chip.sh`](https://github.com/msolters/linux-chip-build-tool/blob/master/vagrant/build-scripts/configure-chip.sh) will be executed.
 
